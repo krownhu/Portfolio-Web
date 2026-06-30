@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikas Saini | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap" rel="stylesheet">
+
+<meta name="description" content="Krown — Graphic Designer & Frontend Java Developer. Modern visuals, clean UI, and reliable execution." />
+<meta property="og:title" content="Krown | Portfolio" />
+<meta property="og:description" content="Graphic designer and frontend Java developer. Modern visuals and clean, responsive UI." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="profile.jpg" />
+<meta property="og:url" content="https://your-site-url.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Krown | Portfolio" />
+<meta name="twitter:description" content="Graphic designer and frontend Java developer. Modern visuals and clean, responsive UI." />
+<meta name="twitter:image" content="profile.jpg" />
+
+<style>
+
+
+/* Lobster Two is applied site-wide via the global * selector */
+
+
+:root{
+
+  --accent:#4da3ff;
+  --bg0:#ffffff;
+  --bg1:#f6f8ff;
+  --text:#0f172a;
+  --muted:#4b5563;
+  --muted2:#667085;
+
+  --nav-bg: rgba(255,255,255,0.72);
+  --nav-border: rgba(15,23,42,0.08);
+  --nav-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+
+  --card-bg: rgba(255,255,255,0.72);
+  --card-border: rgba(15,23,42,0.08);
+  --card-shadow: 0 14px 40px rgba(2, 6, 23, 0.06);
+
+  --glass-bg: rgba(255,255,255,0.65);
+}
+
+body[data-theme="dark"], body[data-theme="dark"] *{ 
+
+  --bg0:#0b1020;
+  --bg1:#0d1322;
+  --text:#ffffff;
+  --muted:#b8c1d1;
+  --muted2:#8ea3c7;
+
+  --nav-bg: rgba(10,15,25,0.78);
+  --nav-border: rgba(255,255,255,0.10);
+  --nav-shadow: 0 10px 30px rgba(0, 0, 0, 0.20);
+
+  --card-bg: rgba(15,20,32,0.84);
+  --card-border: rgba(255,255,255,0.09);
+  --card-shadow: 0 18px 50px rgba(0,0,0,.22);
+
+  --glass-bg: rgba(255,255,255,0.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Lobster Two', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+nav{
+  font-family:'Lobster Two', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+
+body{
+  background:
+    radial-gradient(circle at top left, rgba(77,163,255,0.16), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0,180,255,0.12), transparent 26%),
+    radial-gradient(circle at 60% 15%, rgba(77,163,255,0.10), transparent 22%),
+    radial-gradient(circle at 20% 70%, rgba(0,180,255,0.08), transparent 26%),
+    linear-gradient(135deg,var(--bg0),var(--bg1) 40%, var(--bg0) 100%);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+/* Background ornaments */
+.background-decor{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Keep hero content above background */
+.hero{ z-index:20; position:relative; }
+
+/* Make avatar + floating icons reliably above everything */
+.profile{ z-index:30; }
+.floating{ z-index:40; }
+
+
+/* Animate the background blobs a little */
+.bg-orb{
+  animation: orbFloat 7s ease-in-out infinite;
+}
+
+@keyframes orbFloat{
+  0%, 100%{ transform: translateY(0) translateX(0) scale(1); }
+  50%{ transform: translateY(-18px) translateX(10px) scale(1.03); }
+}
+
+
+
+.bg-orb{
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(77,163,255,0.35), rgba(77,163,255,0.05) 55%, transparent 70%);
+  filter:blur(1px);
+  opacity:.9;
+}
+
+.bg-orb.o1{top:10vh;left:6vw;}
+.bg-orb.o2{top:55vh;right:8vw; width:280px; height:280px; opacity:.75;}
+.bg-orb.o3{bottom:8vh;left:14vw; width:180px; height:180px; opacity:.65;}
+
+.bg-dots{
+  position:absolute;
+  inset:-20% -20% -20% -20%;
+  background-image: radial-gradient(rgba(77,163,255,0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,1), rgba(0,0,0,0) 70%);
+  opacity:.18;
+  transform:rotate(8deg);
+}
+
+/* Ensure content sits above decorations */
+nav, .hero, .section, footer{position:relative; z-index:5;}
+
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(16px);
+  background:linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.62));
+  border-bottom:1px solid var(--nav-border);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  padding:14px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  transition:background .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+body[data-theme="dark"] nav{
+  background:linear-gradient(180deg, rgba(10,15,25,0.82), rgba(10,15,25,0.68));
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+
+nav .logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+nav .logo img{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+nav .logo h2{
+  font-size:18px;
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  margin-left:24px;
+  position:relative;
+  font-weight:700;
+  opacity:.92;
+  letter-spacing:.2px;
+  padding:10px 0;
+}
+
+nav a:first-child{margin-left:0;}
+
+nav div:last-child a{
+  transition:opacity .2s ease, transform .2s ease;
+}
+
+nav div:last-child a:hover{
+  opacity:1;
+  transform:translateY(-1px);
+}
+
+nav a::after{
+  content:'';
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--accent);
+  transition:.3s;
+}
+
+nav a:hover::after{width:100%;}
+
+#themeToggle{
+  appearance:none;
+  border:1px solid var(--nav-border);
+  background:rgba(255,255,255,0.60);
+  color:var(--text);
+  border-radius:999px;
+  padding:6px;
+  width:64px;
+  height:40px;
+  position:relative;
+  overflow:hidden;
+
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 25px rgba(2, 6, 23, 0.06);
+  transition:transform .2s ease, background .25s ease, border-color .25s ease;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+}
+
+#themeToggle:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.78);
+}
+
+#themeToggle .toggle-track{
+  width:42px;
+  height:28px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(15,23,42,0.08);
+  position:relative;
+  overflow:hidden;
+}
+
+#themeToggle .toggle-track::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(77,163,255,0.18), rgba(77,163,255,0.02));
+  opacity:.9;
+}
+
+#themeToggle .toggle-icon{
+  position:absolute;
+  top:50%;
+  left:10px;
+  transform:translate(-50%, -50%);
+  font-size:16px;
+  transition:transform .35s cubic-bezier(.2,.9,.2,1), left .35s cubic-bezier(.2,.9,.2,1);
+  z-index:1;
+}
+
+/* Move icon on theme */
+body[data-theme="dark"] #themeToggle .toggle-icon{
+  left:31px;
+}
+
+
+body[data-theme="dark"] #themeToggle{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+body[data-theme="dark"] #themeToggle:hover{
+  background:rgba(255,255,255,0.08);
+}
+
+body[data-theme="dark"] #themeToggle .toggle-track{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+
+.hero{
+  text-align:center;
+  padding:110px 20px 90px;
+  position:relative;
+  z-index:2;
+}
+
+
+.profile{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  overflow:hidden;
+  margin:auto;
+  position:relative;
+  border:4px solid rgba(77,163,255,0.18);
+  box-shadow:0 15px 40px rgba(2, 6, 23, 0.20);
+}
+
+
+
+.profile img.main{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  /* keep the main PFP stable */
+  transform:none;
+}
+
+.floating{
+  position:absolute;
+  width:38px!important;
+  height:38px!important;
+  background:var(--glass-bg);
+  padding:6px;
+  border-radius:50%;
+  backdrop-filter:blur(8px);
+  animation:float 4s ease-in-out infinite;
+  pointer-events:none;
+  /* smooth animation without layout shift */
+  will-change:transform;
+  transform: translateZ(0);
+  z-index:50;
+}
+
+
+
+
+.f1{top:18px; right:-26px;}
+.f2{bottom:-26px; left:20px; animation-delay:1s;}
+.f3{top:50%; left:-40px; animation-delay:2s; transform: translateY(-50%); z-index:2;}
+
+
+
+
+
+@keyframes float{
+  0%{transform: translateY(0) translateZ(0);}
+  50%{transform: translateY(-10px) translateZ(0);}
+  100%{transform: translateY(0) translateZ(0);}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .floating{ animation: none !important; }
+}
+
+
+
+.hero h1{font-size:64px;margin-top:25px;}
+.hero h3{color:var(--muted2);font-weight:500;margin-top:8px;}
+.hero p{max-width:760px;margin:22px auto;color:var(--muted);font-size:18px;}
+
+/* Minecraft font for section headings (About/Skills/Projects/Contact + Tools I Use) */
+
+
+
+
+.buttons{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:32px;}
+
+.social-btn{
+  min-width:210px;
+  height:62px;
+  padding:0 28px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  background:rgba(255,255,255,0.60);
+  border:1px solid var(--card-border);
+  backdrop-filter:blur(10px);
+  transition:.3s;
+  box-shadow:0 10px 25px rgba(2, 6, 23, 0.08);
+}
+
+body[data-theme="dark"] .social-btn{
+  color:var(--text);
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+.social-btn:hover{transform:translateY(-4px);background:rgba(255,255,255,0.78);}
+body[data-theme="dark"] .social-btn:hover{background:rgba(255,255,255,0.08);}
+
+.section{max-width:1100px;margin:auto;padding:90px 24px;}
+
+
+
+
+
+.section h2{font-size:42px;margin-bottom:20px;}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:40px;}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.78), var(--card-bg));
+  padding:28px;
+  border-radius:22px;
+  border:1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition:.3s;
+}
+
+body[data-theme="dark"] .card{
+  background:linear-gradient(180deg, rgba(18,24,38,0.92), rgba(15,20,32,0.88));
+}
+
+.card:hover{transform:translateY(-8px) scale(1.02);}
+.card p{color:var(--muted);margin-top:10px;}
+
+.contact-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 34px;
+  border-radius:18px;
+  background:var(--accent);
+  color:white;
+  font-weight:700;
+  text-decoration:none;
+  margin-top:30px;
+  transition:.3s;
+}
+
+.contact-btn:hover{transform:translateY(-4px);}
+
+footer{
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid var(--nav-border);
+  color:var(--muted2);
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:42px;}
+  nav{padding:18px;}
+  .buttons{flex-direction:column;align-items:center;}
+  .social-btn{width:100%;max-width:320px;}
+}
+</style>
+</head>
+<body>
+
+<div class="background-decor" aria-hidden="true">
+  <div class="bg-dots"></div>
+  <div class="bg-orb o1"></div>
+  <div class="bg-orb o2"></div>
+  <div class="bg-orb o3"></div>
+</div>
+
+<nav>
+<div class="logo">
+<img src="profile.jpg" alt="Krown profile picture" loading="eager">
+<div>
+<h2>Vikas Saini</h2>
+<p style="color:var(--muted2);">Krown</p>
+</div>
+</div>
+
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div style="display:flex;align-items:center;gap:12px;">
+<button id="themeToggle" type="button" aria-label="Toggle dark/light theme">
+  <span class="toggle-track">
+    <span class="toggle-icon" id="themeIcon" aria-hidden="true">🌙</span>
+  </span>
+</button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="profile">
+<img class="main" src="profile.jpg" alt="Krown profile picture" loading="eager">
+<img class="floating f1" src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Floating design icon" loading="lazy">
+<img class="floating f2" src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png" alt="Floating creativity icon" loading="lazy">
+<img class="floating f3" src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Floating developer icon" loading="lazy">
+</div>
+
+<h1>Krown</h1>
+<h3>Graphic Designer • Frontend Java Developer</h3>
+<p>I design modern visuals and build clean, responsive frontend experiences with Java-based workflows.</p>
+
+<div class="buttons">
+<a class="social-btn" href="https://www.instagram.com/iguess.krown/" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="22" alt="Instagram icon" loading="lazy">
+Instagram
+</a>
+
+<a class="social-btn" href="https://github.com/krownhu" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22" alt="GitHub icon" loading="lazy">
+GitHub
+</a>
+</div>
+</section>
+
+<section class="section" id="about">
+<h2>About Me</h2>
+<p class="minecraft">
+I’m Krown—a creative graphic designer and frontend Java developer. I bring ideas to life with modern branding, clean UI, and reliable execution. With 20+ client experiences, I focus on polished visuals and practical, user-friendly development.
+</p>
+
+<p class="minecraft" style="margin-top:14px; color:var(--muted);">
+I’m from Rajasthan, and right now I’m continuing my graduation while building designs and learning frontend development. I enjoy turning ideas into smooth, user-first experiences.
+</p>
+</section>
+
+<section class="section" id="skills">
+<h2>Skills</h2>
+<div class="skills">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" width="70" alt="Graphic design icon" loading="lazy">
+<h3>Graphic Designer</h3>
+<p>Creative designs, branding, posters and modern visuals.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" width="70" alt="AI tools icon" loading="lazy">
+<h3>AI Tools Expert</h3>
+<p>Experienced with AI tools and creative workflows.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="70" alt="Java developer icon" loading="lazy">
+<h3>Java Developer</h3>
+<p>Frontend Java learner focused on modern development.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Tools I Use</h2>
+<div class="skills">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png" width="70" alt="Adobe Photoshop icon" loading="lazy">
+<h3>Adobe Photoshop</h3>
+<p>Professional graphic editing and premium visual outputs.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" width="70" alt="Canva icon" loading="lazy">
+<h3>Canva</h3>
+<p>Modern social media and branding layouts.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png" width="70">
+<h3>IntelliJ IDEA</h3>
+<p>Java development workflow and clean coding environment.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="projects">
+<h2>Projects</h2>
+<div class="skills">
+
+<div class="card">
+<img src="https://www.google.com/s2/favicons?sz=128&domain_url=https://www.mushland.in" width="55">
+<h3>Mushland</h3>
+<p>Modern responsive website project with smooth user experience.</p>
+<br>
+<a href="https://www.mushland.in/" target="_blank" style="color:#4da3ff;text-decoration:none;font-weight:bold;">Visit Website →</a>
+</div>
+
+<div class="card">
+<img src="awpractice.png" width="85">
+<h3>AwPracticeCore</h3>
+<p>Premium Protection Core focused on advanced workflow management.</p>
+<br>
+<span style="color:#8ea3c7;font-weight:bold;">🔒 Private Project</span>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="contact" style="text-align:center;">
+<h2>Contact Me</h2>
+<p>Interested in working together? Feel free to contact me.</p>
+<a class="contact-btn" href="mailto:krownbussiness@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Krown,%0D%0AI'm%20interested%20in%20working%20together.%0D%0A%0D%0AThanks!">Krownbussiness@gmail.com</a>
+</section>
+
+<footer>
+<script>
+  document.write('© ' + new Date().getFullYear() + ' Krown — All Rights Reserved');
+
+  (function () {
+    const root = document.body;
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    if (!btn || !icon) return;
+
+    const STORAGE_KEY = 'theme';
+
+    function setTheme(theme) {
+      const t = theme === 'dark' ? 'dark' : 'light';
+      root.setAttribute('data-theme', t);
+      root.style.colorScheme = t;
+
+      // Premium icons via inline SVG
+      icon.innerHTML = t === 'dark'
+        ? '<svg width="20" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5C6.477 2.5 2 6.977 2 12.5C2 18.023 6.477 22.5 12 22.5C17.523 22.5 22 18.023 22 12.5C22 12.2 22.987 11.5 22.987 11.5C21.27 12.12 18.9 11.9 17.25 10.25C15.6 8.6 15.37 6.23 16 4.5C16 4.5 16.25 2.5 12 2.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 3.5L9.2 5.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3.5 8.5L5.7 9.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3.5 15.5L5.7 14.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.5 20.5L9.2 18.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+        : '<svg width="20" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 19.5V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 12h2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.5 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4.2 4.2l1.8 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 18l1.8 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.8 4.2L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 18l-1.8 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    }
+
+    function getInitialTheme() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    setTheme(getInitialTheme());
+
+    btn.addEventListener('click', function () {
+      const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem(STORAGE_KEY, next);
+      setTheme(next);
+    });
+  })();
+</script>
+</footer>
+
+</body>
+</html>
